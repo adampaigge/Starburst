@@ -10,14 +10,15 @@ sudo pacman -S --noconfirm --needed $(echo "a52dec adobe-source-sans-pro-fonts a
 curl https://sh.rustup.rs -sSf | sh
 
 # Install yay package manager
-sudo git clone https://aur.archlinux.org/yay.git
-cd yay
+sudo git clone https://aur.archlinux.org/yay-git.git
+sudo chown -R $USER:$USER ./yay-git
+cd yay-git
 makepkg -si --noconfirm
 cd ..
-sudo rm -rf yay
+sudo rm -rf yay-git
 
 # Install using yay
-yay -S  --noconfirm --mflags --skipinteg --nocheck alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
+yay -S  --noconfirm --mflags --skipinteg --needed alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
 
 # Install using pip
 sudo pip install libclang ffmpeg 
