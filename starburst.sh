@@ -7,21 +7,21 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm base-devel libglvnd freetype2 cmake curl fontconfig glfw-wayland glslang libjpeg libusb meson ninja nlohmann-json opencv pkgconf python-pip python-pipx python3 seatd vulkan-headers wget xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu mesa
 
 # Install yay package manager
-git clone https://aur.archlinux.org/yay.git
+sudo git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 cd ..
-rm -rf yay
+sudo rm -rf yay
 
 # Install using yay
 yay -S  --noconfirm --mflags --skipinteg --nocheck alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
 
 # Install using pip
-pip install libclang ffmpeg 
+sudo pip install libclang ffmpeg 
 
 
 # Build and install flatbuffers v2.0.8 manually
-git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
+sudo git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
 cd flatbuffers
 sed -i 's/#include <string>/#include <string>\n#include <cstdint>/' tests/reflection_test.h
 mkdir build
@@ -31,24 +31,24 @@ make
 sudo make install
 cd ..
 cd ..
-rm -r -f flatbuffers
+sudo rm -r -f flatbuffers
 
 # Clone the Monado repository
-git clone https://gitlab.freedesktop.org/monado/monado.git
+sudo git clone https://gitlab.freedesktop.org/monado/monado.git
 cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
 ninja -C build install
-rm -r -f monado
+sudo rm -r -f monado
 
 # Set the CUDAToolkit_ROOT environment variable
 echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
 
 # Install OpenXR-SDK
-git clone https://github.com/KhronosGroup/OpenXR-SDK.git
+sudo git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
 cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 sudo ninja -C build install
 cd .. 
-rm -r -f OpenXR-SDK
+sudo rm -r -f OpenXR-SDK
 
 
 # Delete the WiVRn folder if it exists
@@ -58,7 +58,7 @@ fi
 
 
 # Clone the WiVRn repository
-git clone https://github.com/Meumeu/WiVRn.git
+sudo git clone https://github.com/Meumeu/WiVRn.git
 cd WiVRn
 
 # Build and set up WiVRn
@@ -69,10 +69,10 @@ cmake --build build-server
 mkdir -p ~/.config/openxr/1/
 ln --relative --symbolic --force build-server/openxr_wivrn-dev.json ~/.config/openxr/1/active_runtime.json
 cd ..
-rm -r -f WiVRn
+sudo rm -r -f WiVRn
 
 # Clone the telescope repository
-git clone https://github.com/StardustXR/telescope.git
+sudo git clone https://github.com/StardustXR/telescope.git
 cd telescope
 
 # Take ownership of .sh scripts
