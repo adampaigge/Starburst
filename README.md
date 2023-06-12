@@ -1,6 +1,8 @@
 # Starburst
 Quick installer for StardustXR on Arch Linux
 
+Login as a non-root user with sudo permissions
+
 Make sure git is installed:
 <blockquote>sudo pacman -S git</blockquote>
 
@@ -12,7 +14,7 @@ Navigate to the Install Script and Begin the Installation
 <blockquote>chmod +X starburst.sh</blockquote>
 <blockquote>mv starburst.sh ..</blockquote>
 <blockquote>cd ..</blockquote>
-<blockquote>./Starburst/starburst.sh</blockquote>
+<blockquote>./starburst.sh</blockquote>
 
 After the installation completes, you can start the Stardust XR server by executing the following command:
 
