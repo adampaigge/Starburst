@@ -9,13 +9,6 @@ yes | sudo pacman -Syu --noconfirm
 yes | sudo pacman -S --needed $(echo "a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
 } &> /dev/null
 
-
-
-#Install Cargo
-git clone https://github.com/rust-lang/cargo.git
-cd cargo
-cargo build --release
-
 # Install yay package manager
 sudo git clone https://aur.archlinux.org/yay-git.git
 sudo chown -R $USER:$USER ./yay-git
@@ -25,7 +18,7 @@ cd ..
 sudo rm -rf yay-git
 
 # Install using yay
-yay -S --needed alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
+yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
 
 # Install using pip
 sudo pip install libclang ffmpeg 
