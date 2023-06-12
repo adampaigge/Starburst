@@ -4,7 +4,7 @@
 sudo pacman -Syu --noconfirm
 
 # Install essential packages
-sudo pacman -S --noconfirm base-devel cmake curl fontconfig git glfw-wayland glslang libjpeg libusb mesa meson ninja nlohmann-json opencv pkgconf python-pip python-pipx python3 seatd vulkan-headers wget xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu
+sudo pacman -S --noconfirm base-devel libglvnd freetype2 cmake curl fontconfig glfw-wayland glslang libjpeg libusb meson ninja nlohmann-json opencv pkgconf python-pip python-pipx python3 seatd vulkan-headers wget xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu mesa
 
 # Install yay package manager
 git clone https://aur.archlinux.org/yay.git
