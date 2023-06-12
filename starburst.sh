@@ -4,7 +4,10 @@
 sudo pacman -Syu --noconfirm
 
 # Install essential packages
-sudo pacman -S --noconfirm base-devel cargo libglvnd freetype2 cmake curl fontconfig glfw-wayland glslang libusb meson ninja nlohmann-json opencv pkgconf python python-pip python-pipx seatd vulkan-headers wget xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu mesa
+sudo pacman -S --noconfirm --needed $(echo "base-devel a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore linux-firmware libglvnd freetype2 cmake curl fontconfig glfw-wayland glslang libusb wavpack libdv libmad gst-libav libdvdnav fuse-exfat libvorbis faac enchant mythes-en ttf-liberation hunspell-en_US ttf-bitstream-vera pkgstats adobe-source-sans-pro-fonts gst-plugins-good ttf-droid ttf-dejavu aspell-en icedtea-web gst-libav ttf-ubuntu-font-family ttf-anonymous-pro jre8-openjdk ttf-gentium languagetool libmythes ufw rsync lsof ecryptfs-utils libdvdcss lame openssh openssl libmpeg2 libtheora libxv libdvdread exfat-utils a52dec faad2 flac jasper gstreamer meson ninja nlohmann-json opencv pkgconf python python-pip python-pipx seatd vulkan-headers wget xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu mesa" | awk '!seen[$0]++')
+
+#Install Cargo
+curl https://sh.rustup.rs -sSf | sh
 
 # Install yay package manager
 sudo git clone https://aur.archlinux.org/yay.git
