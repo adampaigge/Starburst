@@ -4,7 +4,7 @@
 sudo pacman -Syu --noconfirm
 
 # Install essential packages
-sudo pacman -S --noconfirm cargo python-pipx ninja libxkbcommon-x11 avahi libxcb glslang git ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda
+sudo pacman -S --noconfirm cargo python-pipx ninja libxkbcommon-x11 avahi libxcb glslang ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda
 
 # Install yay package manager
 git clone https://aur.archlinux.org/yay.git
@@ -14,7 +14,7 @@ cd ..
 rm -rf yay
 
 # Install using yay
-yay -S  --noconfirm --mflags --skipinteg "--nocheck" alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
+yay -S  --noconfirm --mflags --skipinteg --nocheck alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
 
 # Install using pip
 pip install libclang ffmpeg 
