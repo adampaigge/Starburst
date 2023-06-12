@@ -18,7 +18,6 @@ essential_packages=(
     opencv
     pkgconf
     python-pip
-    python-pipx
     python3
     seatd
     vulkan-headers
@@ -55,45 +54,66 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm "${essential_packages[@]}"
 
 # Install yay package manager
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-cd ..
-rm -rf yay
+if ! command -v yay &> /dev/null; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+fi
 
 # Install AUR packages using yay
-yay -S --noconfirm --mflags --skipinteg --nocheck "${aur_packages[@]}"
+for package in "${aur_packages[@]}"; do
+    yay -S --noconfirm --needed "$package"
+done
 
 # Install pip packages
-yay -S --noconfirm --needed python-pipx
-pipx ensurepath
+if ! command -v pipx &> /dev/null; then
+    yay -S --noconfirm --needed python-pipx
+    pipx ensurepath
+fi
+
 for package in "${pip_packages[@]}"; do
-    pipx install "$package"
+    if ! pipx list | grep -q "$package"; then
+        pipx install "$package"
+    fi
 done
 
 # Build and install flatbuffers v2.0.8 manually
-git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
-cd flatbuffers
-sed -i 's/#include <string>/#include <string>\n#include <cstdint>/' tests/reflection_test.h
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-cd ../..
-rm -rf flatbuffers
+if ! command -v flatc &> /dev/null; then
+    git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
+    cd flatbuffers
+    sed -i 's/#include <string>/#include <string>\n#include <cstdint>/' tests/reflection_test.h
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+    cd ../..
+    rm -rf flatbuffers
+fi
 
 # Clone the Monado repository
-git clone https://gitlab.freedesktop.org/monado/monado.git
-cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+if [ ! -d "monado" ]; then
+    git clone https://gitlab.freedesktop.org/monado/monado.git
+fi
+
+cd monado
+cmake -G Ninja -S . -B build -DCMAKE_INSTALL_PREFIX=/usr
 ninja -C build install
+cd ..
 rm -rf monado
 
 # Set the CUDAToolkit_ROOT environment variable
-echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
+if ! grep -q 'CUDAToolkit_ROOT' "$HOME/.bashrc"; then
+    echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
+fi
 
 # Install OpenXR-SDK
-git clone https://github.com/KhronosGroup/OpenXR-SDK.git
+if [ ! -d "OpenXR-SDK" ]; then
+    git clone https://github.com/KhronosGroup/OpenXR-SDK.git
+fi
+
 cd OpenXR-SDK
 cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -B build
 sudo ninja -C build install
@@ -120,7 +140,10 @@ cd ..
 rm -rf WiVRn
 
 # Clone the telescope repository
-git clone https://github.com/StardustXR/telescope.git
+if [ ! -d "telescope" ]; then
+    git clone https://github.com/StardustXR/telescope.git
+fi
+
 cd telescope
 
 # Take ownership of .sh scripts
@@ -149,7 +172,9 @@ cd flatland
 cargo install flatland
 
 # Append the export statement to the .bashrc file
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "$HOME/.bashrc"
+if ! grep -q 'export PATH="$HOME/.cargo/bin:$PATH"' "$HOME/.bashrc"; then
+    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "$HOME/.bashrc"
+fi
 
 # Reload the .bashrc file in the current terminal session
 source "$HOME/.bashrc"
