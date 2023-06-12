@@ -4,7 +4,7 @@
 sudo pacman -Syu --noconfirm
 
 # Install essential packages
-sudo pacman -S --noconfirm --needed $(echo "a52decadobe-source-sans-pro-fontsaspell-enbase-develcmakecurlecryptfs-utilsenchantexfat-utilsfaacfaad2flacfontconfigfreetype2fuse-exfatglfw-waylandglslanggst-libavgst-plugins-goodgstreamerhunspell-en_USicedtea-webjasperjre8-openjdklamelanguagetoollibdcalibdvlibdvdcsslibdvdnavlibdvdreadlibglvndlibmadlibmpeg2libmytheslibtheoralibusblibvorbislibxvlinux-firmwarelsofmesamesonmythes-enninjanlohmann-jsonopencvopensshopensslpkgconfpkgstatspythonpython-pippython-pipxrsyncseatdttf-anonymous-prottf-bitstream-verattf-dejavuttf-droidttf-gentiumttf-liberationttf-ubuntu-font-familyufwvulkan-headerswavpackwgetx264xcb-util-imagexcb-util-keysymsxcb-util-renderutilxcb-util-wmxf86-video-amdgpuxvidcore" | awk '!seen[$0]++')
+sudo pacman -S --needed $(echo "a52decadobe-source-sans-pro-fontsaspell-enbase-develcmakecurlecryptfs-utilsenchantexfat-utilsfaacfaad2flacfontconfigfreetype2fuse-exfatglfw-waylandglslanggst-libavgst-plugins-goodgstreamerhunspell-en_USicedtea-webjasperjre8-openjdklamelanguagetoollibdcalibdvlibdvdcsslibdvdnavlibdvdreadlibglvndlibmadlibmpeg2libmytheslibtheoralibusblibvorbislibxvlinux-firmwarelsofmesamesonmythes-enninjanlohmann-jsonopencvopensshopensslpkgconfpkgstatspythonpython-pippython-pipxrsyncseatdttf-anonymous-prottf-bitstream-verattf-dejavuttf-droidttf-gentiumttf-liberationttf-ubuntu-font-familyufwvulkan-headerswavpackwgetx264xcb-util-imagexcb-util-keysymsxcb-util-renderutilxcb-util-wmxf86-video-amdgpuxvidcore" | awk '!seen[$0]++')
 
 #Install Cargo
 curl https://sh.rustup.rs -sSf | sh
@@ -18,7 +18,7 @@ cd ..
 sudo rm -rf yay-git
 
 # Install using yay
-yay -S  --noconfirm --mflags --skipinteg --needed alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
+yay -S --needed alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD OpenCV Doxygen systemd-devel python python3 python-pip
 
 # Install using pip
 sudo pip install libclang ffmpeg 
@@ -53,13 +53,6 @@ cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 sudo ninja -C build install
 cd .. 
 sudo rm -r -f OpenXR-SDK
-
-
-# Delete the WiVRn folder if it exists
-if [ -d "WiVRn" ]; then
-    rm -rf WiVRn
-fi
-
 
 # Clone the WiVRn repository
 sudo git clone https://github.com/Meumeu/WiVRn.git
@@ -105,7 +98,6 @@ cd flatland
 
 # Install flatland
 cargo install flatland
-
 
 # Append the export statement to the .bashrc file
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "$HOME/.bashrc"
