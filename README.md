@@ -10,7 +10,8 @@ Clone this repository
 Navigate to the Install Script and Begin the Installation
 <blockquote>cd Starburst</blockquote>
 <blockquote>chmod +X starburst.sh</blockquote>
-<blockquote>./starburst.sh</blockquote>
+<blockquote>cd ..</blockquote>
+<blockquote>./Starburst/starburst.sh</blockquote>
 
 After the installation completes, you can start the Stardust XR server by executing the following command:
 
