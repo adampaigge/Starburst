@@ -23,7 +23,6 @@ yay -S --needed alacritty openxr-loader-git cmake libjpeg monado-git OpenHMD Ope
 # Install using pip
 sudo pip install libclang ffmpeg 
 
-
 # Build and install flatbuffers v2.0.8 manually
 sudo git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
 cd flatbuffers
