@@ -10,6 +10,7 @@ Clone this repository
 Navigate to the Install Script and Begin the Installation
 <blockquote>cd Starburst</blockquote>
 <blockquote>chmod +X starburst.sh</blockquote>
+<blockquote>mv starburst.sh ..</blockquote>
 <blockquote>cd ..</blockquote>
 <blockquote>./Starburst/starburst.sh</blockquote>
 
