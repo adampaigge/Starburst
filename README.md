@@ -1,7 +1,7 @@
 # Starburst
 Quick installer for StardustXR on Arch Linux
 
-Login as a non-root user with sudo permissions
+Login as a non-root user with sudo permissions, and ensure you have a working internet connection
 
 Make sure git is installed:
 <blockquote>sudo pacman -S git</blockquote>
