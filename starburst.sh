@@ -31,11 +31,6 @@ deactivate
 # DO I NEED TO CD BACK A FOLDER BEFORE THIS???
 sudo rm -r -f myenv
 
-# Run Supernova (Monado and OpenXR check)
-# sudo chmod +x /Stardust/supernova.sh
-# sudo mv /Stardust/supernova.sh ..
-# sudo ./supernova.sh
-
 # Build and install flatbuffers v2.0.8 manually
 git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
 cd flatbuffers
@@ -62,8 +57,8 @@ cd ..
 sh
 git clone https://gitlab.freedesktop.org/monado/monado.git
 cd monado
-meson build
-ninja -C build install -j24
+cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+sudo ninja -C build install -j24
 cd ..
 
 # Install WiVRn
