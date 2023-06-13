@@ -4,7 +4,7 @@
 yes | sudo pacman -Syu --noconfirm
 
 # Install essential packages
-yes | sudo pacman -S --needed $(echo "a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
+yes | sudo pacman -S --needed $(echo "cargo python-pipx ninja libxkbcommon-x11 avahi libxcb glslang git ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
 
 curl https://sh.rustup.rs -sSf | sh -s
 
@@ -19,7 +19,7 @@ sudo rm -rf yay-git
 
 
 # Install using yay
-yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git OpenHMD OpenCV Doxygen systemd-devel python OpenXR-Loader python3 python-pip
+yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git OpenHMD OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
 
 # Install using pip
 sudo pip install libclang ffmpeg 
@@ -36,6 +36,10 @@ sudo make
 sudo make install
 cd ../..
 sudo rm -r -f flatbuffers
+
+sudo git clone https://gitlab.freedesktop.org/monado/monado.git
+sudo cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+sudo ninja -C build install
 
 # Set the CUDAToolkit_ROOT environment variable
 echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
