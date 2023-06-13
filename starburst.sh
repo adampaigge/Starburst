@@ -42,14 +42,14 @@ echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
 # Install OpenXR-SDK
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
-cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
-ninja -C build install
+sudo cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+sudo ninja -C build install
 cd ..
 
 sh
-git clone https://gitlab.freedesktop.org/monado/monado.git
+sudo git clone https://gitlab.freedesktop.org/monado/monado.git
 cd monado
-meson build
+sudo meson build
 sudo ninja -C build install -j24
 cd ..
 
@@ -58,8 +58,8 @@ sudo git clone https://github.com/Meumeu/WiVRn.git
 cd WiVRn
 
 # Build and set up WiVRn
-cmake -B build-server . -GNinja -DWIVRN_BUILD_CLIENT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
-cmake --build build-server
+sudo cmake -B build-server . -GNinja -DWIVRN_BUILD_CLIENT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+sudo cmake --build build-server
 
 # Set WiVRn as the active OpenXR runtime
 sudo mkdir -p ~/.config/openxr/1/
