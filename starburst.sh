@@ -25,6 +25,9 @@ sudo pip install libclang ffmpeg
 deactivate
 
 # Run Supernova (Monado and OpenXR check)
+# sudo chmod +x /Stardust/supernova.sh
+# sudo mv /Stardust/supernova.sh ..
+# sudo ./supernova.sh
 
 # Build and install flatbuffers v2.0.8 manually
 sudo git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
