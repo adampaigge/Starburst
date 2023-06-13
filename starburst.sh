@@ -14,7 +14,7 @@ cd ..
 sudo rm -rf yay-git
 
 # Install using yay
-yay -S --needed alacritty python2 python2-setuptools openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
+yay -S --needed alacritty python2 python2-setuptools openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc ninja
 
 # Install using pip
 python -m venv myenv
@@ -42,7 +42,7 @@ echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
 # Install OpenXR-SDK
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
-sudo cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+sudo cmake . -G -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 sudo ninja -C build install
 cd ..
 
