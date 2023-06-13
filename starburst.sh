@@ -7,6 +7,7 @@ sudo pacman -S --needed a52dec adobe-source-sans-pro-fonts android-tools aspell-
 # Install Rust
 curl https://sh.rustup.rs -sSf | sh 
 source "$HOME/.cargo/env"
+rustup default stable 
 
 # Install yay package manager
 git clone https://aur.archlinux.org/yay-git.git
