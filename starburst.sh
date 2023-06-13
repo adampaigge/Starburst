@@ -44,12 +44,14 @@ git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
 cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 ninja -C build install
+cd ..
 
 sh
 git clone https://gitlab.freedesktop.org/monado/monado.git
 cd monado
 meson build
 sudo ninja -C build install -j24
+cd ..
 
 # Clone the WiVRn repository
 sudo git clone https://github.com/Meumeu/WiVRn.git
