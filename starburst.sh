@@ -37,20 +37,28 @@ sudo make install
 cd ../..
 sudo rm -r -f flatbuffers
 
-sudo git clone https://gitlab.freedesktop.org/monado/monado.git
-sudo cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
-sudo ninja -C build install
-
 # Set the CUDAToolkit_ROOT environment variable
 echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
 
 # Install OpenXR-SDK
-sudo git clone https://github.com/KhronosGroup/OpenXR-SDK.git
+sudo apt install build-essential cmake libgl1-mesa-dev libvulkan-dev libx11-xcb-dev libxcb-dri2-0-dev libxcb-glx0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxrandr-dev libxxf86vm-dev mesa-common-dev
+git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
-sudo cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
-sudo ninja -C build install
-cd .. 
-sudo rm -r -f OpenXR-SDK
+cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+ninja -C build install
+
+sh
+sudo add-apt-repository ppa:monado-xr/monado
+sudo apt-get update
+sudo apt install libopenxr-loader1 libopenxr-dev libopenxr-utils build-essential git wget unzip cmake meson ninja-build libeigen3-dev curl patch python3 pkg-config libx11-dev libx11-xcb-dev libxxf86vm-dev libxrandr-dev libxcb-randr0-dev libvulkan-dev glslang-tools 
+libglvnd-dev libgl1-mesa-dev ca-certificates libusb-1.0-0-dev libudev-dev libhidapi-dev libwayland-dev libuvc-dev libavcodec-dev libopencv-dev libv4l-dev 
+libcjson-dev libsdl2-dev libegl1-mesa-dev 
+
+sh
+git clone https://gitlab.freedesktop.org/monado/monado.git
+cd monado
+meson build
+sudo ninja -C build install -j24
 
 # Clone the WiVRn repository
 sudo git clone https://github.com/Meumeu/WiVRn.git
