@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Update system
-yes | sudo pacman -Syu --noconfirm
+
 
 # Install essential packages
-yes | sudo pacman -S --needed $(echo "cargo python-pipx ninja libxkbcommon-x11 avahi libxcb glslang git ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
+yes | sudo pacman -Syu --needed $(echo "cargo xr-hardware base-devel git wget unzip cmake ninja libeigen3 curl patch python pkg-config libx11 libx11-xcb libxxf86vm libxrandr xcb-util-xrm libxcb xcb-util-wm xcb-util-cursor libvulkan glslang glslang-tools mesa ca-certificates libusb libudev hidapi wayland wayland-protocols base-devel git wget unzip cmake meson ninja libeigen3 curl patch python pkgconf libx11 libx11-xcb libxxf86vm libxrandr xcb-util-xrm libxcb xcb-util-wm xcb-util-cursor vulkan-tools mesa ca-certificates libusb libudev hidapi wayland libuvc ffmpeg opencv v4l-utils cjson sdl2 libegl libbsd libuvc ffmpeg opencv v4l-utils cjson sdl2 libegl libbsd libopenxr-utils openxr-layer-corevalidation openxr-layer-apidump monado-cli monado-gui libopenxr-loader1 libopenxr-dev libopenxr1-monado libuvc libjpeg ffmpeg libx11 opencv hidapi libxtst libxcb xcb-util doxygen  xcb-util-xrm xcb-util-wm xcb-util-cursor python-pipx libv41 eigen vulkan-headers systemd vulkan-loader ninja libxkbcommon-x11 avahi libxcb glslang git ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
 
 curl https://sh.rustup.rs -sSf | sh -s
 
@@ -19,7 +18,7 @@ sudo rm -rf yay-git
 
 
 # Install using yay
-yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git OpenHMD OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
+yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
 
 # Install using pip
 sudo pip install libclang ffmpeg 
