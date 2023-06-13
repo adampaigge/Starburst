@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#This script installs the dependencies for Monado and OpenXR (I hope)
+
 # Update the package manager
 sudo pacman -Syu
 
