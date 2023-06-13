@@ -1,9 +1,7 @@
 #!/bin/bash
 
-
-
 # Install essential packages
-yes | sudo pacman -Syu --needed $(echo "cargo xr-hardware base-devel git wget unzip cmake ninja libeigen3 curl patch python pkg-config libx11 libx11-xcb libxxf86vm libxrandr xcb-util-xrm libxcb xcb-util-wm xcb-util-cursor libvulkan glslang glslang-tools mesa ca-certificates libusb libudev hidapi wayland wayland-protocols base-devel git wget unzip cmake meson ninja libeigen3 curl patch python pkgconf libx11 libx11-xcb libxxf86vm libxrandr xcb-util-xrm libxcb xcb-util-wm xcb-util-cursor vulkan-tools mesa ca-certificates libusb libudev hidapi wayland libuvc ffmpeg opencv v4l-utils cjson sdl2 libegl libbsd libuvc ffmpeg opencv v4l-utils cjson sdl2 libegl libbsd libopenxr-utils openxr-layer-corevalidation openxr-layer-apidump monado-cli monado-gui libopenxr-loader1 libopenxr-dev libopenxr1-monado libuvc libjpeg ffmpeg libx11 opencv hidapi libxtst libxcb xcb-util doxygen  xcb-util-xrm xcb-util-wm xcb-util-cursor python-pipx libv41 eigen vulkan-headers systemd vulkan-loader ninja libxkbcommon-x11 avahi libxcb glslang git ffmpeg libjpeg base-devel meson cmake pkgconf glfw-wayland libx11 libxcursor libxrandr libxi libxinerama wayland wayland-protocols wget curl fontconfig openxr seatd cargo glibc mesa nvidia libxext libglvnd xf86-video-amdgpu python3 python-pip android-tools vulkan-headers eigen nlohmann-json glslang libusb libv4l libxcb xcb-util-image xcb-util-wm xcb-util-keysyms xcb-util-renderutil opencv ffmpeg libjpeg bluez clang cuda a52dec adobe-source-sans-pro-fonts aspell-enbase-devel cmake curl ecryptfs-utils enchant exfat-utils faac faad2 flac fontconfig freetype2 fuse-exfat glfw-wayland glslang gst-libav gst-plugins-good gstreamer hunspell-en_US icedtea-web jasper jre8-openjdk lame languagetool libdca libdv libdvdcss libdvdnav libdvdread libglvnd libmad libmpeg2 libmythes libtheora libusb libvorbis libxv linux-firmware lsof mesa meson mythes-en ninja nlohmann-json opencv openssh openssl pkgconf pkgstats python python-pip python-pipx rsync seatd ttf-anonymous-prottf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw vulkan-headers wavpack wget x264 xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xf86-video-amdgpu xvidcore" | awk '!seen[$0]++')
+yes | sudo pacman -Syu --needed $(echo "a52dec meson glslang curl patch python pkgconf libusb hidapi wayland opencv sdl2 base-devel cmake vulkan-devel libx11-xcb xcb-util-keysyms xcb-util-wm xcb-util-image libxrandr mesa adobe-source-sans-pro-fonts android-tools aspell-enbase-devel avahi base-devel bluez ca-certificates cargo cjson clang cmake cuda curl doxygen ecryptfs-utils eigen enchant exfat-utils faac faad2 ffmpeg flac font config freetype2 fuse-exfat git glfw-wayland glibc glslang glslang-tools gst-libav gst-plugins-good gstreamer hidapi hunspell-en_US icedtea-web jasper jre8-open jdk lame languagetool libbsd libdca libdv libdvdcss libdvdnav libdvdread libegl libeigen3 libglvnd libjpeg libmad libmpeg2 libmythes libopenxr-dev libopenxr-loader1 libopenxr-utils libopenxr1-monado libtheora libudev libusb libuvc libv41 libv4l libvorbis libvulkan libx11 libx11-xcb libxcb libxcursor libxext libxi libxinerama libxkbcommon-x11 libxrandr libxtst libxv libx xf86vm linux-firmware lsof mesa meson monado-cli monado-gui mythes-en ninja nlohmann-json nvidia opencv openssh openssl openxr openxr-layer-apidump openxr-layer-corevalidationpatch pkg-config pkgconf pkgstats python python-pip python-pipx python3 rsyncsdl2 seatd systemd ttf-anonymous-pro ttf-bitstream-vera ttf-dejavu ttf-droid ttf-gentium ttf-liberation ttf-ubuntu-font-family ufw unzip v4l-utils vulkan-headers vulkan-loader vulkan-tools wavpack wayland wayland-protocols wget x264 xcb-util xcb-util-cursor xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xcb-util-xrm xf86-video-amdgpu xr-hardware xvidcore" | awk '!seen[$0]++')
 
 curl https://sh.rustup.rs -sSf | sh -s
 
@@ -15,13 +13,15 @@ makepkg -si --noconfirm
 cd ..
 sudo rm -rf yay-git
 
-
-
 # Install using yay
 yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
 
 # Install using pip
+python -m venv myenv
+source myenv/bin/activate
+
 sudo pip install libclang ffmpeg 
+deactivate
 
 # Build and install flatbuffers v2.0.8 manually
 sudo git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
@@ -40,18 +40,10 @@ sudo rm -r -f flatbuffers
 echo 'export CUDAToolkit_ROOT=/usr/local/cuda' >> "$HOME/.bashrc"
 
 # Install OpenXR-SDK
-sudo apt install build-essential cmake libgl1-mesa-dev libvulkan-dev libx11-xcb-dev libxcb-dri2-0-dev libxcb-glx0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxrandr-dev libxxf86vm-dev mesa-common-dev
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
 cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 ninja -C build install
-
-sh
-sudo add-apt-repository ppa:monado-xr/monado
-sudo apt-get update
-sudo apt install libopenxr-loader1 libopenxr-dev libopenxr-utils build-essential git wget unzip cmake meson ninja-build libeigen3-dev curl patch python3 pkg-config libx11-dev libx11-xcb-dev libxxf86vm-dev libxrandr-dev libxcb-randr0-dev libvulkan-dev glslang-tools 
-libglvnd-dev libgl1-mesa-dev ca-certificates libusb-1.0-0-dev libudev-dev libhidapi-dev libwayland-dev libuvc-dev libavcodec-dev libopencv-dev libv4l-dev 
-libcjson-dev libsdl2-dev libegl1-mesa-dev 
 
 sh
 git clone https://gitlab.freedesktop.org/monado/monado.git
