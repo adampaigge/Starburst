@@ -3,6 +3,8 @@
 #automatically shuts the script down when you encounter an error
 set -e
 
+sudo pacman -R glfw-x11
+
 # Update System and Install essential packages
 sudo pacman -Syu --needed a52dec adobe-source-sans-pro-fonts android-tools avahi base-devel bluez ca-certificates cjson clang cmake cuda curl doxygen ecryptfs-utils eigen enchant exfat-utils faac faad2 ffmpeg flac freetype2 fuse-exfat git glfw-wayland glibc glslang gst-libav gst-plugins-good gstreamer hidapi hunspell-en_US icedtea-web jasper lame languagetool libbsd libdca libdv libdvdcss libdvdnav libdvdread libegl libglvnd libjpeg libmad libmpeg2 libmythes libtheora libusb libvorbis  
 
