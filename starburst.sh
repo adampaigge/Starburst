@@ -14,7 +14,7 @@ cd ..
 sudo rm -rf yay-git
 
 # Install using yay
-yay -S --needed alacritty cargo openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
+yay -S --needed alacritty openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV Doxygen systemd-devel python OpenXR python3 python-pip libuvc
 
 # Install using pip
 python -m venv myenv
