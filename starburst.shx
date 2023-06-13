@@ -21,7 +21,7 @@ python -m venv myenv
 source myenv/bin/activate
 
 sudo pip install libclang ffmpeg 
-deactivate
+exit
 
 # Build and install flatbuffers v2.0.8 manually
 sudo git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
