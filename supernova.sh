@@ -14,7 +14,7 @@ cd ..
 rm -rf yay
 
 # Install using yay
-yay -S --noconfirm --mflags --skipinteg --nocheck alacritty cmake doxygen libjpeg monado-git openhmd openxr-loader-git python systemd-devel
+yay -S --noconfirm --mflags --skipinteg --nocheck alacritty python2 python2-setuptools cmake doxygen libjpeg monado-git openhmd openxr-loader-git python systemd-devel
 
 # Install using pip
 pip install libclang ffmpeg
