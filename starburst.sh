@@ -54,7 +54,6 @@ sudo ninja -C build install
 cd ..
 
 # Install Monado
-sh
 git clone https://gitlab.freedesktop.org/monado/monado.git
 sudo chown -R $USER:$USER ./monado
 cd monado
