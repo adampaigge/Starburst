@@ -43,7 +43,7 @@ cd flatbuffers
 sudo sed -i 's/#include <string>/#include <string>\n#include <cstdint>/' tests/reflection_test.h
 sudo mkdir build
 cd build
-cmake ..
+sudo cmake ..
 make
 make install
 cd ../..
