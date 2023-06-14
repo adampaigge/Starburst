@@ -24,7 +24,7 @@ sudo rm -rf yay-git
 # sudo pacman -R glfw-x11
 
 # Install packages using yay
-yay -S --noconfirm --needed python2 python2-setuptools doxygen-clang openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV systemd-devel python OpenXR python3 python-pip libuvc ninja
+yay -S --noconfirm --needed python2 python2-numpy python2-setuptools doxygen-clang openxr-loader-git cmake libjpeg monado monado-git openhmd-git OpenCV systemd-devel python OpenXR python3 python-pip libuvc ninja
 
 # Install using pip
 python -m venv myenv
