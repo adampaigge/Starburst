@@ -39,11 +39,12 @@ sudo rm -r -f myenv
 
 # Build and install flatbuffers v2.0.8 manually
 git clone --branch v2.0.8 https://github.com/google/flatbuffers.git
+sudo chown -R $USER:$USER ./flatbuffers
 cd flatbuffers
 sudo sed -i 's/#include <string>/#include <string>\n#include <cstdint>/' tests/reflection_test.h
 sudo mkdir build
 cd build
-sudo cmake ..
+cmake ..
 make
 make install
 cd ../..
@@ -54,6 +55,7 @@ export CUDAToolkit_ROOT=/usr/local/cuda
 
 # Install OpenXR-SDK
 clone https://github.com/KhronosGroup/OpenXR-SDK.git
+sudo chown -R $USER:$USER ./OpenXR-SDK
 cd OpenXR-SDK
 cmake . -G -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 ninja -C build install
@@ -62,6 +64,7 @@ cd ..
 # Install Monado
 sh
 git clone https://gitlab.freedesktop.org/monado/monado.git
+sudo chown -R $USER:$USER ./monado
 cd monado
 cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
 sudo ninja -C build install -j24
@@ -69,6 +72,7 @@ cd ..
 
 # Install WiVRn
 git clone https://github.com/Meumeu/WiVRn.git
+sudo chown -R $USER:$USER ./WiVRn
 cd WiVRn
 cmake -B build-server . -GNinja -DWIVRN_BUILD_CLIENT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
 cmake --build build-server
@@ -79,9 +83,8 @@ sudo rm -r -f WiVRn
 
 # Setup Stardust
 git clone https://github.com/StardustXR/telescope.git
+sudo chown -R $USER:$USER ./telescope
 cd telescope
-
-sudo chown -R $USER:$USER *.sh
 
 ./setup.sh
 ./hmd-setup.sh
