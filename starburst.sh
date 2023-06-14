@@ -47,9 +47,10 @@ export CUDAToolkit_ROOT=/usr/local/cuda
 
 # Install OpenXR-SDK
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
+sudo chown -R $USER:$USER ./OpenXR-SDK
 cd OpenXR-SDK
-cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
-ninja -C build install
+sudo cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+sudo ninja -C build install
 cd ..
 
 # Install Monado
