@@ -46,7 +46,7 @@ sudo rm -r -f flatbuffers
 export CUDAToolkit_ROOT=/usr/local/cuda
 
 # Install OpenXR-SDK
-clone https://github.com/KhronosGroup/OpenXR-SDK.git
+git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
 cmake . -G -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 ninja -C build install
