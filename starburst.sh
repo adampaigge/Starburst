@@ -57,7 +57,7 @@ cd ..
 git clone https://gitlab.freedesktop.org/monado/monado.git
 sudo chown -R $USER:$USER ./monado
 cd monado
-sudo cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+sudo cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -B build 
 sudo ninja -C build install -j24
 cd ..
 
