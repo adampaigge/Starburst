@@ -55,11 +55,9 @@ cd ..
 
 # Install Monado
 git clone https://gitlab.freedesktop.org/monado/monado.git
-sudo chown -R $USER:$USER ./monado
-cd monado
-sudo cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild 
-sudo ninja -C build install -j24
-cd ..
+cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+ninja -C build install
+rm -r -f monado
 
 # Install WiVRn
 # git clone https://github.com/Meumeu/WiVRn.git
