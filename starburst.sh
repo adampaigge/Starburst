@@ -20,7 +20,7 @@ cd ..
 sudo rm -rf yay-git
 
 # Install packages using yay
-yay -S --noconfirm --needed python2 python2-setuptools doxygen-clang cmake libjpeg openhmd-git systemd-devel python python3 python-pip libuvc ninja monado-git
+yay -S --noconfirm --needed python2 python2-setuptools doxygen-clang cmake libjpeg openhmd-git systemd-devel python python3 python-pip libuvc ninja openxr-loader-git monado-git
 # openxr-loader-git OpenXR
 
 # Install using pip
