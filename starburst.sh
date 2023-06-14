@@ -56,8 +56,11 @@ cd ..
 # Install Monado
 # git clone https://gitlab.freedesktop.org/monado/monado.git
 # sudo mkdir build
-# cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
-# ninja -C build install
+# cd build
+# cmake .. -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles"
+# cmake --build .
+# cmake --build . --target install
+# cd ../..
 # rm -r -f monado
 
 # Install WiVRn
