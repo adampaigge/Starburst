@@ -48,7 +48,7 @@ export CUDAToolkit_ROOT=/usr/local/cuda
 # Install OpenXR-SDK
 git clone https://github.com/KhronosGroup/OpenXR-SDK.git
 cd OpenXR-SDK
-cmake . -G -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 ninja -C build install
 cd ..
 
