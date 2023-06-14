@@ -54,11 +54,11 @@ sudo ninja -C build install
 cd ..
 
 # Install Monado
-git clone https://gitlab.freedesktop.org/monado/monado.git
-sudo mkdir build
-cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
-ninja -C build install
-rm -r -f monado
+# git clone https://gitlab.freedesktop.org/monado/monado.git
+# sudo mkdir build
+# cmake -G Ninja -S monado -B build -DCMAKE_INSTALL_PREFIX=/usr
+# ninja -C build install
+# rm -r -f monado
 
 # Install WiVRn
 # git clone https://github.com/Meumeu/WiVRn.git
