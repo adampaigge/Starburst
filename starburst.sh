@@ -62,14 +62,14 @@ sudo ninja -C build install -j24
 cd ..
 
 # Install WiVRn
-git clone https://github.com/Meumeu/WiVRn.git
-cd WiVRn
-sudo cmake -B build-server . -GNinja -DWIVRN_BUILD_CLIENT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
-sudo cmake --build build-server
-sudo mkdir -p ~/.config/openxr/1/
-sudo ln --relative --symbolic --force build-server/openxr_wivrn-dev.json ~/.config/openxr/1/active_runtime.json
-cd ..
-sudo rm -r -f WiVRn
+# git clone https://github.com/Meumeu/WiVRn.git
+# cd WiVRn
+# sudo cmake -B build-server . -GNinja -DWIVRN_BUILD_CLIENT=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+# sudo cmake --build build-server
+# sudo mkdir -p ~/.config/openxr/1/
+# sudo ln --relative --symbolic --force build-server/openxr_wivrn-dev.json ~/.config/openxr/1/active_runtime.json
+# cd ..
+# sudo rm -r -f WiVRn
 
 # Setup Stardust
 git clone https://github.com/StardustXR/telescope.git
