@@ -1,11 +1,9 @@
 #!/bin/bash
-
 #automatically shuts the script down when you encounter an error
 set -e
 
 # Update System and Install essential packages
 sudo pacman -Syu --needed dkms linux-headers a52dec adobe-source-sans-pro-fonts android-tools avahi base-devel bluez ca-certificates cjson clang cmake cuda curl ecryptfs-utils eigen enchant exfat-utils faac faad2 ffmpeg flac freetype2 fuse-exfat git glibc glslang gst-libav gst-plugins-good gstreamer hidapi hunspell-en_US icedtea-web jasper lame languagetool libbsd libdca libdv libdvdcss libdvdnav libdvdread libegl libglvnd libjpeg libmad libmpeg2 libmythes libtheora libusb libvorbis libx11 libxcb libxcursor libxext libxi libxinerama libxkbcommon-x11 libxrandr libxtst libxv libxxf86vm linux-firmware lsof mesa mythes-en ninja nlohmann-json nvidia opencv openssh openssl openxr patch pkg-config pkgconf pkgstats python python-pip python-pipx python3 rsync sdl2 seatd systemd ttf-anonymous-pro ttf-bitstream-vera ttf-dejavu ttf-droid  ttf-liberation ttf-ubuntu-font-family ufw unzip v4l-utils vulkan-devel vulkan-headers vulkan-tools wavpack wayland wayland-protocols wget x264 xcb-util xcb-util-cursor xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm xcb-util-xrm xf86-video-amdgpu xvidcore
-
 # glfw-wayland
 
 # Install Rust
@@ -21,11 +19,8 @@ makepkg -si --noconfirm
 cd ..
 sudo rm -rf yay-git
 
-# sudo pacman -R glfw-x11
-
 # Install packages using yay
 yay -S --noconfirm --needed python2 python2-setuptools doxygen-clang cmake libjpeg openhmd-git systemd-devel python python3 python-pip libuvc ninja
-
 # openxr-loader-git OpenXR
 
 # Install using pip
@@ -33,8 +28,6 @@ python -m venv myenv
 source myenv/bin/activate
 pip install libclang ffmpeg 
 deactivate
-
-# DO I NEED TO CD BACK A FOLDER BEFORE THIS???
 sudo rm -r -f myenv
 
 # Build and install flatbuffers v2.0.8 manually
