@@ -11,7 +11,7 @@ Make sure git is installed:
 <blockquote>sudo pacman -S git</blockquote>
 
 Clone this repository
-<blockquote>sudo git clone https://github.com/tiaugn/Starburst</blockquote>
+<blockquote>sudo git clone https://github.com/SecondaryWorlds/Starburst</blockquote>
 
 Navigate to the Install Script and Begin the Installation
 <blockquote>cd Starburst</blockquote>
